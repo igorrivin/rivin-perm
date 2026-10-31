@@ -1,0 +1,49 @@
+# Schur Matrix Permanents perm(S_n)
+# S_n[j,k] = omega^{jk} where omega = e^{2*pi*i/n}
+# OEIS A003112: https://oeis.org/A003112
+#
+# Values for odd n (even n always gives 0)
+
+# From the OEIS b-file (index k corresponds to n=2*k+1):
+n=1:   1
+n=3:   -3
+n=5:   -5
+n=7:   -105
+n=9:   81
+n=11:  6765
+n=13:  175747
+n=15:  30375
+n=17:  25219857
+n=19:  142901109
+n=21:  4548104883
+n=23:  -31152650265
+n=25:  -5198937484375
+n=27:  65230244418933
+n=29:  -1300425712598285
+n=31:  126691467546591
+n=33:  868088125376401545
+n=35:  -15139017417029296875
+
+# New computations (this project):
+n=37:  -339696021338069660245
+       Computed: 2026-02-05, Time: 56.8 minutes (improved algorithm)
+
+n=39:  -29260070859488572505025
+       Computed: 2026-02-05, Time: 4.76 hours (CPU)
+
+n=41:  1617562409111471411255401
+       Computed: 2026-02-06, Time: 87.9 min (GPU H100)
+
+n=43:  -23811413912733485902431027
+       Computed: 2026-02-06, Time: 423.8 min (GPU H100)
+
+n=45:  -470483360490107435783203125
+       Computed: 2026-08-15, Summed required-residue time: 1949.882 s
+       (32.50 min, GPU GH200)
+       Required GPU residues: 3 (44x44-minor Glynn); independent holdout excluded
+
+n=47:  -52876272639843868105982022705
+       Computed: 2026-08-15, Summed required-residue time: 3702.521 s
+       (61.71 min, GPU GH200)
+       Required 46x46-minor necklace residue wall times: 927.630 + 924.995 +
+       924.999 + 924.897 s; independent validation excluded

@@ -1,0 +1,138 @@
+# Start from an empty list, including when setuptools finds a VCS plugin or
+# stale SOURCES.txt. New repository files are private until explicitly listed.
+global-exclude *
+include pyproject.toml setup.py README.md LICENSE MANIFEST.in
+include perm.py perm_binary.py perm_binary_applications.py perm_float.py
+include perm_mod3.py perm_numba.py perm_polynomial.py
+recursive-include rivin_perm.egg-info *.txt PKG-INFO
+include PACKAGING.md
+include tools/check_installed.py
+include tools/check_distribution.py
+include BINARY_APPLICATIONS.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include LOW_RANK_DISPATCH_RESULTS.md
+include LOW_RANK_SHOWCASES.md
+include CUDA.md
+include REPOSITORY_LAYOUT.md
+include RESEARCH_CORRECTIONS.md
+include cycle_geodesic.py
+include statistics_helpers.py
+include benchmark.py
+include benchmark_binary.py
+include benchmark_native_dispatch.py
+include benchmark_low_rank.py
+include showcase_low_rank.py
+include benchmark_weighted_rook.py
+include experiment_random_cubic.py
+include notes/frontier/verify_binary_grid_4x4x5_transfer.py
+include notes/benchmarks/README.md
+include notes/benchmarks/SCHUR.md
+include notes/benchmarks/polynomial_compare.py
+include notes/benchmarks/polynomial_baselines.cpp
+include notes/benchmarks/summarize_polynomial_comparison.py
+include notes/benchmarks/WEIGHTED_MATCHINGS.md
+include notes/benchmarks/weighted_matching_study.py
+include notes/benchmarks/weighted_matching_statistics.py
+include notes/benchmarks/weighted_matching_frontier.py
+include notes/benchmarks/weighted_matching_frontier_native.py
+include notes/benchmarks/weighted_matching_frontier_native.cpp
+include notes/benchmarks/WEIGHTED_FRONTIER_NATIVE.md
+include notes/benchmarks/weighted_rook_dispatch.py
+include notes/benchmarks/WEIGHTED_ROOK_DISPATCH.md
+include notes/benchmarks/weighted_matching_partition.py
+include notes/benchmarks/weighted_matching_partition.cpp
+include notes/benchmarks/summarize_weighted_matching_study.py
+include notes/benchmarks/schur_compare.py
+include notes/benchmarks/schur_compare_wrapper.cu
+include notes/benchmarks/check_schur_orbits.py
+include perm_binary_cuda.py
+include perm_binary_omp.c
+include perm_cuda.py
+include perm_c_omp.c
+include perm_mod3_omp.c
+include perm_parallel.py
+include perm_polynomial_omp.c
+include schur_permanents.txt
+include tests/README.md
+include perm_binary_cuda.cu
+include perm_enum_cuda.cu
+include perm_mod3_cuda.cu
+include perm_modp_cuda.cu
+include perm_parallel_cuda.cu
+include perm_proj_cuda.cu
+
+# Reviewed public tests. Do not replace this list with a wildcard.
+include tests/test_core.py
+include tests/test_reference_values.py
+include tests/test_dispatch_efficiency.py
+include tests/test_generic_native.py
+include tests/test_binary_permanent.py
+include tests/test_binary_native.py
+include tests/test_binary_frontier.py
+include tests/test_binary_applications.py
+include tests/test_binary_cuda_wrappers.py
+include tests/test_polynomial_permanent.py
+include tests/test_polynomial_native.py
+include tests/test_polynomial_benchmark.py
+include tests/test_low_rank_dispatch.py
+include tests/test_low_rank_showcases.py
+include tests/test_cuda_wrappers.py
+include tests/test_cuda_crt_planning.py
+include tests/test_cuda_device_binary.py
+include tests/test_cuda_device_modular.py
+include tests/test_cuda_device_parallel.py
+include tests/test_cuda_device_schur_glynn.py
+include tests/test_cuda_device_utilities.py
+include tests/test_perm_parallel_api.py
+include tests/test_source_distribution.py
+include tests/test_schur_cpu_glynn.py
+include tests/test_schur_benchmark.py
+include tests/test_research_statistics.py
+include tests/test_cycle_geodesic.py
+include tests/test_random_cubic_experiment.py
+include tests/test_weighted_rook_source_dispatch.py
+include tests/test_weighted_rook_planner.py
+include tests/test_weighted_rook_dispatch.py
+include tests/test_weighted_matching_summary.py
+include tests/test_weighted_matching_study.py
+include tests/test_weighted_matching_statistics.py
+include tests/test_weighted_matching_partition.py
+include tests/test_weighted_matching_frontier_native.py
+include tests/test_weighted_matching_frontier.py
+
+# The general package sdist is separate from the curated Schur paper archive.
+# Explicit pruning also removes these paths from a stale SOURCES.txt cache.
+prune notes/evals
+prune notes/experiments
+prune notes/verification
+prune notes/client
+prune notes/session-logs
+prune outputs
+prune papers
+prune .agents
+prune .codex
+global-exclude *.so *.pyd *.dll *.dylib *.o *.a *.py[cod]
+global-exclude ._* .DS_Store
+
+# These tests intentionally bind to private/check-out-only notes, and one
+# carries active evaluator answer-derived pins. Keep them in the full private
+# repository, never in a public source distribution.
+exclude tests/test_krawtchouk_crt_cuda_oracle.py
+exclude tests/test_krawtchouk_power2_prototype.py
+exclude tests/test_principal_sign_projection_prototype.py
+exclude tests/test_entry_derivative_cofactor_projection_oracle.py
+exclude tests/test_repository_structure.py
+exclude tests/test_schur_record_verification.py
+exclude tests/test_finite_field_rank_verification.py
+exclude tests/test_polynomial_record_verification.py
+exclude tests/test_scalar_holdout_campaign.py
+exclude tests/test_f9_count_verification.py
+exclude tests/test_schur_ryser_audit.py
+exclude tests/test_schur_ryser_crt.py
+exclude tests/test_schur_crt_queue.py
+exclude tests/test_polynomial_interpolation_campaign.py
+exclude tests/test_publication_queue.py
+exclude tests/test_schur_release.py
+exclude tests/test_schur_release_v2.py
+exclude tests/test_schur47_public_audit.py

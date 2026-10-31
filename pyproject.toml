@@ -1,0 +1,65 @@
+[build-system]
+requires = [
+    "setuptools>=77",
+    "numpy>=2.0,<3",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rivin-perm"
+version = "1.0.0"
+description = "Exact and floating-point matrix permanent computation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Igor Rivin"}]
+dependencies = ["numpy>=1.23.5,<3"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.urls]
+Source = "https://github.com/igorrivin/rivin-perm"
+Issues = "https://github.com/igorrivin/rivin-perm/issues"
+
+[project.optional-dependencies]
+numba = ["numba>=0.57"]
+dev = ["build>=1.2", "pytest>=7,<10", "setuptools>=77", "twine>=6"]
+
+[tool.setuptools]
+include-package-data = false
+py-modules = [
+    "perm", "perm_binary", "perm_binary_applications", "perm_float",
+    "perm_mod3", "perm_numba", "perm_polynomial",
+]
+
+[tool.cibuildwheel]
+build = "cp310-manylinux_x86_64 cp311-manylinux_x86_64 cp312-manylinux_x86_64 cp313-manylinux_x86_64 cp314-manylinux_x86_64"
+environment = {PERM_BUILD_OPENMP = "required"}
+test-command = "python {project}/tools/check_installed.py --require-native"
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64"]
+manylinux-x86_64-image = "manylinux_2_28"
+
+[[tool.cibuildwheel.overrides]]
+select = "cp3{10,11}-*"
+test-command = [
+    "python {project}/tools/check_installed.py --require-native",
+    "python -m pip install numpy==1.23.5",
+    "python {project}/tools/check_installed.py --require-native",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra"
