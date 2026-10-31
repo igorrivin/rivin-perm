@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           python -m pip install 'numpy>=1.23.5,<3'
-          python -c "import pathlib,tarfile; p=next(pathlib.Path('dist').glob('*.tar.gz')); t=tarfile.open(p); t.extractall('public-tests', filter='data')"
+          python tools/extract_sdist.py dist/*.tar.gz public-tests
           cd public-tests/rivin_perm-*
           python -m pytest -q
       - uses: actions/upload-artifact@v7
