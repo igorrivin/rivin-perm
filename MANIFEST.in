@@ -9,6 +9,7 @@ include PACKAGING.md
 include tools/check_installed.py
 include tools/check_distribution.py
 include tools/extract_sdist.py
+include tools/prepare_release.py
 include BINARY_APPLICATIONS.md
 include CHANGELOG.md
 include CONTRIBUTING.md

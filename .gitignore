@@ -8,6 +8,8 @@ dist/
 wheelhouse/
 public-tests/
 rejected-wheel/
+release-dist/
+release-manifest.json
 *.so
 *.pyd
 *.dylib

@@ -24,9 +24,14 @@ boundaries are described in [REPOSITORY_LAYOUT.md](REPOSITORY_LAYOUT.md).
 ## Installation
 
 The pip distribution is named **`rivin-perm`**, while Python code continues to
-use `import perm` and the existing companion module names. Release candidates
-target Python 3.10–3.14. PyPI publication is pending; do not install the
-unrelated PyPI project named `perm` to obtain this library.
+use `import perm` and the existing companion module names. Python 3.10–3.14
+is covered by CI. Install the published release with:
+
+```bash
+python -m pip install rivin-perm
+```
+
+Do not install the unrelated PyPI project named `perm` to obtain this library.
 
 To install a validated wheel supplied with a release candidate:
 

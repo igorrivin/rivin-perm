@@ -67,4 +67,8 @@ official cross-platform release.
 These commands prepare and validate artifacts; they do not publish them.
 This public repository contains the reviewed export with fresh Git history.
 Run the CI matrix and review the repaired wheel artifacts before publication.
-The name `rivin-perm` has been selected; PyPI publication is pending.
+The manual `Publish PyPI` workflow accepts an exact successful CI run and
+commit, verifies all 17 jobs, downloads its seven immutable distribution
+files, checks their metadata and common Python payloads, and publishes those
+files without rebuilding. It uses the `pypi` environment and a project-specific
+PyPI trusted publisher for `igorrivin/rivin-perm`, workflow `publish.yml`.
